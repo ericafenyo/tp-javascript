@@ -1,0 +1,11 @@
+{
+  "name": "tp-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tp02.js",
+  "scripts": {
+    "tp02": "node tp02.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
