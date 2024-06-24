@@ -22,3 +22,4 @@ console.log(array2);
 console.log("\nArray sum elements:");
 console.log("--------------");
 console.log(arraySum);
+

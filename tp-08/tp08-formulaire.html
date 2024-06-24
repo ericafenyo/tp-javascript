@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP-08</title>
+
+    <style>
+        div {
+            margin: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="handleSubmit(event)">
+        <div>
+            <label for="firstName">First name :</label>
+            <input name="firstName" type="text" placeholder="Enter your first name">
+        </div>
+
+        <div>
+            <label for="lastName">Last name :</label>
+            <input name="lastName" type="text" placeholder="Enter your last name">
+        </div>
+        <div>
+            <label for="birthDate">Birth date :</label>
+            <input name="birthDate" type="text" placeholder="Enter your date of birth">
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        const handleSubmit = (event) => {
+            // Prevent the default behavior of the form
+            event.preventDefault();
+            // Get the form data
+            const formData = new FormData(event.target);
+
+            // Get the individual form data
+            const firstName = formData.get('firstName');
+            const lastName = formData.get('lastName');
+            const birthDate = formData.get('birthDate');
+
+            // If each is empty after removing white spaces, alert the user
+            const isFirstNameEmpty = firstName.trim() === '';
+            const isLastNameEmpty = lastName.trim() === '';
+            const isBirthDateEmpty = birthDate.trim() === '';
+
+            const errors = [];
+            if (isFirstNameEmpty) {
+                errors.push('First name is required');
+            }
+
+            if (isLastNameEmpty) {
+                errors.push('Last name is required');
+            }
+
+            if (isBirthDateEmpty) {
+                errors.push('Birth date is required');
+            }
+
+            if (errors.length > 0) {
+                alert(errors.join('\n'));
+                return;
+            }
+
+            // If all fields are filled, alert the user with the form data
+            alert(`First name: ${firstName}\nLast name: ${lastName}\nBirth date: ${birthDate}`);
+        }
+    </script>
+</body>
+
+</html>

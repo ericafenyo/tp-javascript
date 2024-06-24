@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 08</title>
+
+    <style>
+        span,
+        input,
+        button {
+            display: block;
+            margin: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span></span>
+        <label></label>
+        <input class="addend" type="text" placeholder="Enter a number">
+        <input class="addend" type="text" placeholder="Enter another number">
+        <button class="button">Compute Addition</button>
+
+        <script>
+            // Get the button and set the click event
+            const button = document.querySelector('.button');
+            button.addEventListener('click', () => {
+                // Get all the addends
+                let addends = document.querySelectorAll('.addend');
+
+                // Get all the values of the addends
+                let values = Array.from(addends).map(addend => parseInt(addend.value));
+
+                // Verify that they are all numbers
+                const isAllNumerical = values.every(value => !isNaN(value));
+                if (!isAllNumerical) {
+                    alert('Vous devez saisir un nombre');
+                    return;
+                }
+
+                // Compute the addition
+                const sum = values.reduce((acc, value) => acc + value, 0);
+
+                // Display the result
+                const span = document.querySelector('span');
+                span.innerHTML = `<strong>Le résultat de l'addition est : ${sum}</strong>`;
+            });
+        </script>
+    </div>
+
+</body>
+
+</html>

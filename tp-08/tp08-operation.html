@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP 08</title>
+
+    <style>
+        div {
+            margin: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span></span>
+    </div>
+    <div>
+        <input id="input1" type="text" placeholder="First number">
+    </div>
+
+    <div>
+        <input id="input2" type="text" placeholder="Second number">
+    </div>
+
+    <div>
+        <select>
+            <option value="addition"><strong>+</strong></option>
+            <option value="subtraction">-</option>
+            <option value="multiplication">*</option>
+            <option value="division">/</option>
+        </select>
+    </div>
+    <div>
+        <button>Compute</button>
+    </div>
+
+    <script>
+        // Get the button and set the click event
+        const button = document.querySelector('button');
+        button.addEventListener('click', function () {
+            // Get all the inputs
+            // Get the values of the inputs
+            const value1 = document.querySelector('#input1').value;
+            const value2 = document.querySelector('#input2').value;
+
+            // Verify that they are all numbers
+            if (isNaN(value1) || isNaN(value2)) {
+                alert('Vous devez saisir un nombre');
+                return;
+            }
+
+            // Get the operation
+            const select = document.querySelector('select');
+            const operation = select.value;
+
+            // Compute the operation
+            const span = document.querySelector('span');
+            let result;
+            let number1 = parseInt(value1);
+            let number2 = parseInt(value2);
+            switch (operation) {
+                case 'addition':
+                    result = number1 + number2;
+                    span.innerHTML = `<strong>Le résultat de l’addition est : ${result}</strong>`;
+                    break;
+                case 'subtraction':
+                    result = number1 - number2;
+                    span.innerHTML = `<strong> Le résultat de la soustraction est : ${result}</strong>`;
+                    break;
+                case 'multiplication':
+                    result = number1 * number2;
+                    span.innerHTML = `<strong>TLe résultat de la multiplication est : ${result}</strong>`;
+                    break;
+                case 'division':
+                    if (number2 === 0) {
+                        alert('Division par zéro impossible');
+                        return;
+                    }
+                    result = number1 / number2;
+                    span.innerHTML = `<strong>Le résultat de la division est : ${result}</strong>`;
+                    break;
+            }
+        });
+    </script>
+</body>
+
+</html>
